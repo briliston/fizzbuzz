@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace fizzbuzz.web.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/fizzbuzz")]
     [ApiController]
     public class FizzbuzzApiController : ControllerBase
     {
-        [HttpGet]
-        public IEnumerable<string[]> Get()
+        [HttpGet, Route("getFizzbuzzResults")]
+        public async Task<IActionResult> GetFizzbuzzResults()
         {
             FizzbuzzCalculator fizzy = new();
             var wordsAndNumbers = new Dictionary<int, string>
@@ -21,7 +21,7 @@ namespace fizzbuzz.web.Controllers
             };
 
             var results = fizzy.CallFizzbuzz(wordsAndNumbers);
-            yield return results;
+            return Ok(results);
         }
     }
 }

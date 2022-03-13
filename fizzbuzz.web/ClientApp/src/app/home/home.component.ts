@@ -6,10 +6,10 @@ import { Component, Inject, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
 })
 export class HomeComponent{
-  fizzbuzzResults: string[] = [];
+  fizzbuzzResults: string[] = new Array();
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<string[]>(baseUrl + 'FizzbuzzApi').subscribe(result => {
+    http.get<string[]>(baseUrl + 'api/fizzbuzz/getFizzbuzzResults').subscribe(result => {
       this.fizzbuzzResults = result;
     }, error => console.error(error));
   }
