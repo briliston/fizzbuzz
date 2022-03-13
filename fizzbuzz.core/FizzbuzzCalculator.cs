@@ -4,8 +4,8 @@
     {
         public string[] CallFizzbuzz(Dictionary<int, string> wordsWithNumbers)
         {
-            string[] results = new string[10000001];
-            for (var i = 1; i <= 10000000; i++)
+            string[] results = new string[101];
+            for (var i = 1; i <= 100; i++)
             {
                 foreach (var word in wordsWithNumbers)
                 {
