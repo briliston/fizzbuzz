@@ -2,21 +2,24 @@
 {
     public class FizzbuzzCalculator : IFizzbuzzCalculator
     {
-        public string[] CallFizzbuzz(Dictionary<int, string> wordsWithNumbers)
+        public IEnumerable<string> CallFizzbuzz(Dictionary<int, string> wordsWithNumbers, int i)
         {
-            string[] results = new string[101];
-            for (var i = 1; i <= 100; i++)
+            var result = "";
+            foreach (var word in wordsWithNumbers)
             {
-                foreach (var word in wordsWithNumbers)
+                if (i % word.Key == 0)
                 {
-                    if (i % word.Key == 0)
-                    {
-                        results[i] += word.Value;
-                    }
+                    result = word.Value;
                 }
-                results[i] = (String.IsNullOrEmpty(results[i]) ? i.ToString() : results[i]);
             }
-            return results;
+            result = string.IsNullOrEmpty(result) ? i.ToString() : result;
+            
+            yield return result;
         }
+    }
+
+    public interface IFizzbuzzCalculator
+    {
+        IEnumerable<string> CallFizzbuzz(Dictionary<int, string> wordsWithNumbers, int i);
     }
 }

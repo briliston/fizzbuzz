@@ -1,5 +1,4 @@
 ﻿using fizzbuzz.core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace fizzbuzz.web.Controllers
@@ -8,20 +7,18 @@ namespace fizzbuzz.web.Controllers
     [ApiController]
     public class FizzbuzzApiController : ControllerBase
     {
-        [HttpGet, Route("getFizzbuzzResults")]
-        public async Task<IActionResult> GetFizzbuzzResults()
-        {
-            FizzbuzzCalculator fizzy = new();
-            var wordsAndNumbers = new Dictionary<int, string>
-            {
-                { 3, "Foo" },
-                { 5, "Bar" },
-                { 7, "Bazz" },
-                { 11, "Banana" }
-            };
+        private readonly FizzbuzzService _fizzbuzzService;
 
-            var results = fizzy.CallFizzbuzz(wordsAndNumbers);
-            return Ok(results);
+        public FizzbuzzApiController(FizzbuzzService fizzbuzzService)
+        {
+            _fizzbuzzService = fizzbuzzService;
+        }
+
+        [HttpGet, Route("getFizzbuzzResults")]
+        public void GetFizzbuzzResults(Dictionary<int, string> wordsWithNumbers)
+        {
+            _fizzbuzzService.DetermineFizzbuzzValues(wordsWithNumbers);
+            //might call to a hub for signal r that actually calls the service? ask Johann
         }
     }
 }
