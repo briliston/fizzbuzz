@@ -1,8 +1,10 @@
+using fizzbuzz.core;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -22,5 +24,6 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html"); ;
+app.MapHub<FizzbuzzHub>("/fizzbuzzHub");
 
 app.Run();

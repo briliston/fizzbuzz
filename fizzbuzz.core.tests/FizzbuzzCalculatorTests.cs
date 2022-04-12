@@ -15,11 +15,10 @@ namespace fizzbuzz.core.tests
 
             var fizzbuzzCalculator = builder.Build();
 
-            var results = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers);
+            var result = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers, 3);
 
-            Assert.IsNotNull(results);
-            Assert.AreEqual("Foo", results[3]);
-            Assert.AreEqual("Foo", results[27]);
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Foo", result);
         }
 
         [TestMethod]
@@ -30,11 +29,10 @@ namespace fizzbuzz.core.tests
 
             var fizzbuzzCalculator = builder.Build();
 
-            var results = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers);
+            var result = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers, 40);
 
-            Assert.IsNotNull(results);
-            Assert.AreEqual("Bar", results[5]);
-            Assert.AreEqual("Bar", results[40]);
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Bar", result);
         }
 
         [TestMethod]
@@ -45,11 +43,10 @@ namespace fizzbuzz.core.tests
 
             var fizzbuzzCalculator = builder.Build();
 
-            var results = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers);
+            var result = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers, 49);
 
-            Assert.IsNotNull(results);
-            Assert.AreEqual("Bazz", results[7]);
-            Assert.AreEqual("Bazz", results[49]);
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Bazz", result);
         }
 
         [TestMethod]
@@ -60,11 +57,10 @@ namespace fizzbuzz.core.tests
 
             var fizzbuzzCalculator = builder.Build();
 
-            var results = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers);
+            var result = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers, 44);
 
-            Assert.IsNotNull(results);
-            Assert.AreEqual("Banana", results[11]);
-            Assert.AreEqual("Banana", results[44]);
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Banana", result);
         }
 
         [TestMethod]
@@ -75,11 +71,10 @@ namespace fizzbuzz.core.tests
 
             var fizzbuzzCalculator = builder.Build();
 
-            var results = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers);
+            var result = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers, 30);
 
-            Assert.IsNotNull(results);
-            Assert.AreEqual("FooBar", results[30]);
-            Assert.AreEqual("FooBar", results[60]);
+            Assert.IsNotNull(result);
+            Assert.AreEqual("FooBar", result);
         }
 
         [TestMethod]
@@ -90,11 +85,10 @@ namespace fizzbuzz.core.tests
 
             var fizzbuzzCalculator = builder.Build();
 
-            var results = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers);
+            var result = fizzbuzzCalculator.CallFizzbuzz(builder.wordsAndNumbers, 34);
 
-            Assert.IsNotNull(results);
-            Assert.AreEqual("8", results[8]);
-            Assert.AreEqual("34", results[34]);
+            Assert.IsNotNull(result);
+            Assert.AreEqual("34", result);
         }
     }
 }
