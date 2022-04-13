@@ -1,6 +1,22 @@
-<h1>Fizz Buzz Results</h1>
+<h4>Enter Word Number Pairs:</h4>
 <div>
-    <table>
+    <label>Word: </label>
+    <input type="text" class="inputs" id="word" [(ngModel)]="newPair.word" />
+    <label>Number: </label>
+    <input type="number" class="inputs" id="num" [(ngModel)]="newPair.num" />
+    <button class="btn btn-secondary" (click)="addPair()">Add Pair</button>
+
+    <table *ngIf="wordAndNumberPairs.length > 0" class="table table-striped">
+        <tr>
+            <th>Word</th>
+            <th>Number</th>
+        </tr>
+        <tr *ngFor="let wordAndNumberPair of wordAndNumberPairs">
+            <td>{{ wordAndNumberPair.word }}</td>
+            <td>{{ wordAndNumberPair.num }}</td>
+        </tr>
+    </table>
+    <table *ngIf="fizzbuzzResults.length > 0">
         <tr>
             <th>Number or Word</th>
         </tr>
@@ -8,4 +24,5 @@
             <td>{{ result }}</td>
         </tr>
     </table>
+    <button class="btn btn-primary" *ngIf="wordAndNumberPairs.length > 0" (click)="getFizzbuzzResults()">Submit</button>
 </div>

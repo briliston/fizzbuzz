@@ -8,7 +8,7 @@ namespace fizzbuzz.core.tests.Builders
 {
     internal class FizzbuzzCalculatorBuilder
     {
-        internal Dictionary<int, string> wordsAndNumbers;
+        internal Dictionary<string, int> wordsAndNumbers;
         internal FizzbuzzCalculatorBuilder()
         {
 
@@ -21,12 +21,12 @@ namespace fizzbuzz.core.tests.Builders
 
         internal FizzbuzzCalculatorBuilder WithDataFor_WordNumberPairs()
         {
-            wordsAndNumbers = new Dictionary<int, string>
+            wordsAndNumbers = new Dictionary<string, int>
             {
-                { 3, "Foo" },
-                { 5, "Bar" },
-                { 7, "Bazz" },
-                { 11, "Banana" }
+                { "Foo", 3 },
+                { "Bar", 5 },
+                { "Bazz", 7 },
+                { "Banana", 11 }
             };
 
             return this;

@@ -2,14 +2,14 @@
 {
     public class FizzbuzzCalculator : IFizzbuzzCalculator
     {
-        public string CallFizzbuzz(Dictionary<int, string> wordsWithNumbers, int i)
+        public string CallFizzbuzz(Dictionary<string, int> wordsWithNumbers, int i)
         {
             var result = "";
             foreach (var word in wordsWithNumbers)
             {
-                if (i % word.Key == 0)
+                if (i % word.Value == 0)
                 {
-                    result += word.Value;
+                    result += word.Key;
                 }
             }
             return string.IsNullOrEmpty(result) ? i.ToString() : result;
@@ -18,6 +18,6 @@
 
     public interface IFizzbuzzCalculator
     {
-        string CallFizzbuzz(Dictionary<int, string> wordsWithNumbers, int i);
+        string CallFizzbuzz(Dictionary<string, int> wordsWithNumbers, int i);
     }
 }
