@@ -1,9 +1,11 @@
-<h4>Enter Word Number Pairs:</h4>
+<h5>Enter Number of Iterations:</h5>
+<input type="number" class="iterationInput" id="num" [(ngModel)]="total" />
+<h5>Enter Word Number Pairs:</h5>
 <div>
     <label>Word: </label>
     <input type="text" class="inputs" id="word" [(ngModel)]="newPair.word" />
     <label>Number: </label>
-    <input type="number" class="inputs" id="num" [(ngModel)]="newPair.num" />
+    <input type="number" class="inputs" id="num" [(ngModel)]="newPair.divisor" />
     <button class="btn btn-secondary" (click)="addPair()">Add Pair</button>
 
     <table *ngIf="wordAndNumberPairs.length > 0" class="table table-striped">
@@ -13,7 +15,7 @@
         </tr>
         <tr *ngFor="let wordAndNumberPair of wordAndNumberPairs">
             <td>{{ wordAndNumberPair.word }}</td>
-            <td>{{ wordAndNumberPair.num }}</td>
+            <td>{{ wordAndNumberPair.divisor }}</td>
         </tr>
     </table>
     <table *ngIf="fizzbuzzResults.length > 0">
@@ -25,4 +27,5 @@
         </tr>
     </table>
     <button class="btn btn-primary" *ngIf="wordAndNumberPairs.length > 0" (click)="getFizzbuzzResults()">Submit</button>
+    <button class="btn btn-primary" *ngIf="fizzbuzzResults.length > 0" (click)="clearFizzbuzzResults()">Clear</button>
 </div>

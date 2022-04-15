@@ -3,12 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace fizzbuzz.web.Controllers
 {
-    public class FizzbuzzHub : Hub<IHubClient>
+    public class FizzbuzzHub : Hub
     {
-    }
-
-    public interface IHubClient
-    {
-        Task BroadcastMessage();
     }
 }

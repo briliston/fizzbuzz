@@ -1,5 +1,7 @@
 ﻿using fizzbuzz.core;
+using fizzbuzz.core.Models;
 using fizzbuzz.web.Controllers;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
@@ -9,20 +11,28 @@ namespace fizzbuzz.web.Controllers
     [Route("api/fizzbuzz")]
     public class FizzbuzzApiController : ControllerBase
     {
-        private readonly IHubContext<FizzbuzzHub, IHubClient> _hub;
-        private readonly IFizzbuzzService _fizzbuzzService;
+        private readonly IHubContext<FizzbuzzHub> _hub;
 
-        public FizzbuzzApiController(IHubContext<FizzbuzzHub, IHubClient> hub, IFizzbuzzService fizzbuzzService)
+        public FizzbuzzApiController(IHubContext<FizzbuzzHub> hub)
         {
             _hub = hub;
-            _fizzbuzzService = fizzbuzzService;
         }
 
-        [HttpGet, Route("fizzbuzzResults")]
-        public async Task<IActionResult> GetFizzbuzzResults(Dictionary<string, int> pairs)
+        [HttpPost, Route("post")]
+        public IActionResult Post(FizzbuzzParametersModel parameters)
         {
-            _fizzbuzzService.SendFizzbuzzAsItIsDetermined(pairs);
-            await _hub.Clients.All.BroadcastMessage();
+            Task.Run(async () =>
+            {
+                if (parameters.Entries == null) return;
+                if (parameters.Total == 0) return;
+                if (string.IsNullOrEmpty(parameters.ConnectionId)) return;
+
+                foreach (var output in FizzbuzzCalculator.DetermineFizzbuzz(parameters))
+                {
+                    await _hub.Clients.Client(parameters.ConnectionId).SendAsync("publishresult", output);
+                }
+            });
+
             return Ok();
         }
     }

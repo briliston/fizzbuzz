@@ -1,23 +1,21 @@
-﻿namespace fizzbuzz.core
-{
-    public class FizzbuzzCalculator : IFizzbuzzCalculator
-    {
-        public string CallFizzbuzz(Dictionary<string, int> wordsWithNumbers, int i)
-        {
-            var result = "";
-            foreach (var word in wordsWithNumbers)
-            {
-                if (i % word.Value == 0)
-                {
-                    result += word.Key;
-                }
-            }
-            return string.IsNullOrEmpty(result) ? i.ToString() : result;
-        }
-    }
+﻿using fizzbuzz.core.Models;
 
-    public interface IFizzbuzzCalculator
+namespace fizzbuzz.core
+{
+    public class FizzbuzzCalculator
     {
-        string CallFizzbuzz(Dictionary<string, int> wordsWithNumbers, int i);
+        public static IEnumerable<string> DetermineFizzbuzz(FizzbuzzParametersModel parameters)
+        {
+            for (int i = 1; i < parameters.Total; i++)
+            {
+                var result = "";
+                foreach (var entry in parameters.Entries!)
+                {
+                    if (i % entry.Divisor == 0)
+                        result += entry.Word;
+                }
+                yield return string.IsNullOrEmpty(result) ? i.ToString() : result;
+            }
+        }
     }
 }

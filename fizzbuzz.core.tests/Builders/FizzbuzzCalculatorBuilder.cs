@@ -1,35 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using fizzbuzz.core.Models;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace fizzbuzz.core.tests.Builders
-{
-    internal class FizzbuzzCalculatorBuilder
-    {
-        internal Dictionary<string, int> wordsAndNumbers;
-        internal FizzbuzzCalculatorBuilder()
-        {
+//namespace fizzbuzz.core.tests.Builders
+//{
+//    internal class FizzbuzzCalculatorBuilder
+//    {
+//        internal FizzbuzzParametersModel? parameters;
 
-        }
+//        internal static FizzbuzzCalculator Build()
+//        {
+//            return new FizzbuzzCalculator();
+//        }
 
-        internal FizzbuzzCalculator Build()
-        {
-            return new FizzbuzzCalculator();
-        }
+//        internal FizzbuzzCalculatorBuilder WithDataFor_WordNumberPairs()
+//        {
+//            parameters = new FizzbuzzParametersModel
+//            {
+//                Total = 100,
+//                Entries = new WordNumberPairModel[]
+//                {
+//                    new WordNumberPairModel { Word = "Foo", Divisor = 3 },
+//                    new WordNumberPairModel { Word = "Bar", Divisor = 5 },
+//                    new WordNumberPairModel { Word = "Bazz", Divisor = 7 },
+//                    new WordNumberPairModel { Word = "Banana", Divisor = 11 }
+//                },
+//                ConnectionId = ""
+//            };
 
-        internal FizzbuzzCalculatorBuilder WithDataFor_WordNumberPairs()
-        {
-            wordsAndNumbers = new Dictionary<string, int>
-            {
-                { "Foo", 3 },
-                { "Bar", 5 },
-                { "Bazz", 7 },
-                { "Banana", 11 }
-            };
-
-            return this;
-        }
-    }
-}
+//            return this;
+//        }
+//    }
+//}
